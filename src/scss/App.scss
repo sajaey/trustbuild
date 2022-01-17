@@ -1,0 +1,357 @@
+@import "~bootstrap/scss/bootstrap";
+
+//Small tablets and large smartphones (landscape views)
+$screen-sm-min:576px;
+//Small tablets (portrait view)
+$screen-md-min:768px;
+//Tablets and small desktops
+$screen-lg-min:992px;
+// Large Tablets and desktops
+$screen-xl-min:1200px;
+//Mixins
+//Small devices
+@mixin sm{
+    @media(min-width:#{$screen-sm-min}){
+        @content;
+    }
+}
+//Small devices
+@mixin md{
+    @media(min-width:#{$screen-md-min}){
+        @content;
+    }
+}
+//Small devices
+@mixin lg{
+    @media(min-width:#{$screen-lg-min}){
+        @content;
+    }
+}
+
+//Colors
+$orange:#fd5a3c;
+$white:#ffffff;
+$dark:#1b1b1b;
+
+header{
+	background:$dark;
+    .navbar{
+        .navbar-brand{
+            @include lg{
+                text-align: center;
+                width:250px;
+            }
+            img{
+                max-width:80%;
+                @include lg{
+                    max-width:100%;
+                }
+            }
+        }
+        .navbar-nav{
+            .nav-item{
+                padding:.5em 0;
+                font-weight: bold;
+                font-size:.9em;
+                @include lg{
+                    padding:0 2em;
+                }
+                a{
+					color:#fcfcfc!important;
+                    @include lg{
+                        border:none;
+                    }
+					&.btn{
+                        background:$orange;
+                        color:$white;
+                        font-weight:bold;
+                        font-size:1em;
+				    }
+                }
+                &:last-child{
+                    a{
+                        border:none;
+                    }
+                }
+            }
+            .active{
+                a{
+                    border-bottom: 4px solid $orange;
+                }
+            }
+        }
+    }
+}
+
+.herobanner{
+	background:$dark;
+	h1{
+		font-size:4em;
+		font-weight:bold;
+		color:#fcfcfc;
+	}
+	p{
+		font-weight:bold;
+		color:#fcfcfc;
+	}
+	.btn{
+		background:$orange;
+		color:$white;
+		border:none;
+		font-weight:bold;
+		font-size:1em;
+		border-radius:25px;
+        z-index:0;
+        position: relative;
+        &::before{
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:$white;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transform-origin: 0 100%;
+            transform-origin: 0% 100%;
+            -webkit-transition-property: transform;
+            transition-property: transform;
+            -webkit-transition-duration: .2s;
+            transition-duration: .2s;
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+        }
+        &:hover{
+            color:$gray-900;
+            &::before{
+                 transform: scaleX(1);
+            }
+        }
+	}
+    .banner{
+        min-height:500px;
+        background:url("../assets/images/banner.png") no-repeat;
+        background-size: cover;
+    }
+}
+
+.marketing{
+    background:$dark;
+    .welcometxt{
+        h4{
+             color:#fd5a3c;
+             font-size:1em;
+             font-weight:bold;
+        }
+        h2{
+             font-weight:bold;
+             font-size:1em;
+             color:#fcfcfc;
+             @include lg{
+                 font-size:3em;
+             }
+        }
+        p{
+            font-weight:normal;
+        }
+    }
+    .features{
+        .services{
+            z-index:1;
+            position: relative;
+            cursor: pointer;
+            color:$gray-500;
+             &::before{
+                 content: "";
+                 position: absolute;
+                 z-index: -1;
+                 top: 0;
+                 left: 0;
+                 right: 0;
+                 bottom: 0;
+                 background:#fd5a3c;
+                 -webkit-transform: scaleX(0);
+                 transform: scaleX(0);
+                 -webkit-transform-origin: 0 100%;
+                 transform-origin: 0% 100%;
+                 -webkit-transition-property: transform;
+                 transition-property: transform;
+                 -webkit-transition-duration: .2s;
+                 transition-duration: .2s;
+                 -webkit-transition-timing-function: ease-out;
+                 transition-timing-function: ease-out;
+        }
+        &:hover{
+            color:$white;
+            padding-left:20px;
+            &::before{
+                 transform: scaleX(1);
+            }
+        }
+        h4{
+            color:#fd5a3c;
+                font-size:1em;
+                font-weight:bold;
+                text-align:center
+        }
+        h5{
+         padding:.8em 0;
+         font-size:1em;
+         margin:0;
+         font-weight: bold;
+     }
+     }
+    }
+}
+
+.pro{
+    h4{
+        color:#fd5a3c;
+            font-size:1em;
+            font-weight:bold;
+            text-align:center
+    }
+    h2{
+        text-align: center;
+        font-weight:bold;
+    }
+    .fig{
+        display: inline-block;
+        background:$gray-200;
+        padding:1em;
+        cursor: pointer;
+    }
+    .imgborder{
+        max-width:100%;
+        border:12px solid $gray-300;
+    }
+}
+
+.about{
+    &__us{
+        position:relative;
+        &__blocks{
+            width:100%;
+            position: absolute;
+            padding:0 2em 0 0;    
+            bottom:0; 
+            strong{
+                font-size:3em;
+                display: block;
+                text-align: center;
+            }
+        }
+    }
+    &__services{
+        background:url(../assets/images/serrvice-bg.png) no-repeat #f7f7f7;
+        background-size: contain;
+        background-position: 80% 0;
+        
+    }
+    &__mission{
+        min-height:520px;
+       &__left{
+           background:url(../assets/images/mission.png) no-repeat;
+           background-size: cover;
+       }
+       &__right{
+           padding:0 20% 0 10%;
+            &::before{
+                content: '';
+                background:url(../assets/images/mission_overlay.png) no-repeat;
+                background-size: contain;
+                position:absolute;
+                width:300px;
+                height:400px;
+                left:-150px;
+                bottom:0;
+           }
+       }
+    }
+}
+
+.places{
+    img{
+        max-width:100%;
+        border:12px solid $gray-300;
+    }
+}
+
+.contact{
+    background:#242424;
+    &__left{
+        padding-left:150px;
+        h1{
+            color:$white;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #fd5a3c;
+            width: fit-content;
+        }
+        &-email{
+           padding:0;
+            color:#fd5a3c;
+            font-size:2em;
+        }
+        &-phone{
+            margin-top:5em;
+            color:#fd5a3c;
+            padding:0;
+            font-size:2em;
+        }
+    }
+    &__right{
+        input,textarea{
+            border-width: 0 0 1px 0;
+        }
+        button{
+            background:#fd5a3c;
+            color:$white;
+            font-weight:bold;
+            font-size:1em;
+            border:none;
+        }
+    }
+}
+
+footer{
+    background:$dark;
+    padding:3em 0;
+    color:$gray-600;
+    h2{
+        padding:0 0 .5em 0;
+    }
+    a{
+        color:$gray-600;
+        &:hover{
+            color:$gray-600;
+            text-decoration: none;
+        }
+    }
+    h5{
+        font-size:1em;
+        font-weight:bold;
+    }
+
+    ul{
+        list-style:none;
+        a{
+            color:$gray-600;
+            &:hover{
+                color:$gray-600;
+                text-decoration: none;
+            }
+        }
+    }
+    .social{
+        flex-direction: row;
+        &__list{
+            background:none;
+            font-size:1.5em;
+            &:hover{
+                background:none;
+            }
+        }
+    }
+}
